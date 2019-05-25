@@ -64,6 +64,14 @@
             "rules": {
                 "no-undef": 0
             }
+        },
+        {
+            "files": ["config/**/*.js"],
+            "rules": {
+                "no-undef": 0,
+                "import/no-extraneous-dependencies": 0,
+                "no-restricted-syntax": 0
+            }
         }
     ]
 }
