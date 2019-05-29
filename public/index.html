@@ -1,13 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form</title>
+
+    <style>
+        .invalid {
+            background-color: #f00;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello!!!</h1>
+    <form id="form">
+        <ul id="error"></ul>
+        <label id="firstName">
+            <span>First Name</span>
+            <input aria-required="true"
+                   name="firstName" 
+                   maxlength="30"
+                   type="text"/>
+        </label>
+
+        <label id="lastName">
+            <span>Last Name</span>
+            <input aria-required="true"
+                   name="lastName"
+                   maxlength="30" 
+                   type="text"/>
+        </label>
+
+        <label id="phone">
+            <span>Phone Number</span>
+            <input aria-required="true"
+                   pattern="[0-9]{1,30}"
+                   name="phone" 
+                   maxlength="30"
+                   type="tel"/>
+        </label>
+
+        <label id="email">
+            <span>Email</span>
+            <input aria-required="true"
+                   name="email"
+                   maxlength="50" 
+                   type="text"/>
+        </label>
+
+        <label id="promo">
+            <span>Promo Code</span>
+            <input name="promo" 
+                   type="text"
+                   maxlength="7"/>
+        </label>
+
+        <label id="ref">
+            <span>How did you hear</span>
+            <select aria-required="true" name="ref">
+                <option value="Social Media">Socital Media</option>
+                <option value="From a friend">From a friend</option>
+                <option value="Email">Email</option>
+                <option value="OTHER">Other</option>
+            </select>
+            
+            <input class="other-option" 
+                   type="text"
+                   maxlength="255"/>
+        </label>
+
+        <label id="terms">
+            <span>Accept <a data-action="open" data-modal="terms-modal" href="#">Terms & Conditions</a></span>
+            <input aria-required="true" name="terms" type="checkbox"/>
+        </label>
+
+        <button type="submit">Submit!</button>
+    </form>
+    <div class="hide" id="success">
+        <h1>Done!</h1>
+    </div>
+
+    <div id="terms-modal" class="hide">
+        <a href="#" data-modal="terms-modal" data-action="close">X</a>
+        <ul>
+            <li>All cancellation requests must be received by March 1, 2022</li>
+            <li>All cancellation requests are subject to a $100 cancellation fee.</li>
+            <li>No one under the age of 16 will be allowed on the show floor.</li>
+        </ul>
+    </div>
     <script src="/form.bundle.js"></script>
 </body>
+
 </html>

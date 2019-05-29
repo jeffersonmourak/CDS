@@ -42,6 +42,7 @@ function fieldValidator(value, property) {
                     type: 'VALIDATION',
                     error: {
                         type: 'NOT_MATCH',
+                        expected: property.validator.expectError,
                     },
                 };
             }
@@ -54,7 +55,7 @@ function fieldValidator(value, property) {
                     type: 'VALIDATION',
                     error: {
                         type: 'NOT_MATCH',
-                        expect: validation,
+                        expected: property.validator.expectError || validation,
                     },
                 };
             }
@@ -117,20 +118,22 @@ function backendBusiness(req, res) {
             name: 'phone',
             validator: {
                 length: 30,
-                match: /\d+/gm,
+                match: /\d+/s,
+                expectError: 'digits only',
             },
         },
         {
             name: 'email',
             validator: {
                 length: 50,
-                match: /\S+@\S+\.\S+/gm,
+                match: /\S+@\S+\.\S+/s,
             },
         },
         {
             name: 'terms',
             validator: {
                 boolean: true,
+                expectError: 'checked',
             },
         },
     ];
@@ -150,7 +153,7 @@ function backendBusiness(req, res) {
             name: 'promo',
             validator: {
                 length: 7,
-                match: /[a-z0-9]+/gm,
+                match: /[a-z0-9]+/s,
             },
         });
     }
