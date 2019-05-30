@@ -7,7 +7,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(/images/header.jpg);
+    background-image: url(../images/header.jpg);
     background-size: cover;
     background-position: center;
     color: #fff;
