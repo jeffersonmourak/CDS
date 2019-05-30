@@ -1,4 +1,4 @@
-#README
+# README
 
 It's necessary to use the node environment to run it.
 preferable to use in dev mode since there are no backend enabled.
@@ -18,7 +18,7 @@ run `yarn start` or `npm run start` to initialize the development mode.
 there's a fake backend output that does a second field validation for more security.
 
 
-# Build it.
+## Build it.
 
 To build simply run:
 
