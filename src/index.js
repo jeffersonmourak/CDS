@@ -3,10 +3,10 @@ import ReferenceField from './fields/ReferenceField';
 import CheckField from './fields/CheckField';
 
 import Form from './Form';
-import Modal from './Modal';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import './style/main.css';
 
 const FIELDS = [
     new Field('firstName', /.{1,30}/s),
@@ -20,5 +20,3 @@ const FIELDS = [
 
 const form = new Form('form');
 form.addFields(FIELDS);
-
-const modal = new Modal('terms-modal');

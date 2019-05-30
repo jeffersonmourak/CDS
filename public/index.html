@@ -6,93 +6,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form</title>
-
-    <style>
-        .invalid {
-            background-color: #f00;
-        }
-        .hide {
-            display: none;
-        }
-    </style>
 </head>
 
-<body>
-    <form id="form">
-        <ul id="error"></ul>
-        <label id="firstName">
-            <span>First Name</span>
-            <input aria-required="true"
-                   name="firstName" 
-                   maxlength="30"
-                   type="text"/>
-        </label>
+<body class="d-flex flex-column h-100">
+    <header class="text-center">
+        <h1>Contact Details</h1>
+    </header>
+    <main role="main" class="flex-shrink-0 px-5 main">
+        <div class="container-fluid bg-light p-4 rounded shadow">
+            <form id="form">
+                <div id="error"></div>
+                <span>Please fill all of the required field. (*)</span>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label id="firstName">
+                            <span class="fs-14 font-weight-bold">First Name</span>
+                            <span class="required">*</span>
+                            <input aria-required="true" class="form-control" name="firstName" maxlength="30"
+                                type="text" />
+                        </label>
+                    </div>
 
-        <label id="lastName">
-            <span>Last Name</span>
-            <input aria-required="true"
-                   name="lastName"
-                   maxlength="30" 
-                   type="text"/>
-        </label>
 
-        <label id="phone">
-            <span>Phone Number</span>
-            <input aria-required="true"
-                   pattern="[0-9]{1,30}"
-                   name="phone" 
-                   maxlength="30"
-                   type="tel"/>
-        </label>
+                    <div class="form-group col-sm-6">
+                        <label id="lastName">
+                            <span class="fs-14 font-weight-bold">Last Name</span>
+                            <span class="required">*</span>
+                            <input aria-required="true" name="lastName" class="form-control" maxlength="30"
+                                type="text" />
+                        </label>
+                    </div>
+                </div>
 
-        <label id="email">
-            <span>Email</span>
-            <input aria-required="true"
-                   name="email"
-                   maxlength="50" 
-                   type="text"/>
-        </label>
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <label id="email">
+                            <span class="fs-12 font-italic">Email</span>
+                            <span class="required">*</span>
+                            <input aria-required="true" name="email" maxlength="50" class="form-control" type="text" />
+                        </label>
+                    </div>
 
-        <label id="promo">
-            <span>Promo Code</span>
-            <input name="promo" 
-                   type="text"
-                   maxlength="7"/>
-        </label>
+                    <div class="form-group col-md-4">
+                        <label id="phone">
+                            <span class="fs-12">Phone Number</span>
+                            <span class="required">*</span>
+                            <input aria-required="true" pattern="[0-9]{1,30}" class="form-control" name="phone"
+                                maxlength="30" type="tel" />
+                        </label>
+                    </div>
+                </div>
 
-        <label id="ref">
-            <span>How did you hear</span>
-            <select aria-required="true" name="ref">
-                <option value="Social Media">Socital Media</option>
-                <option value="From a friend">From a friend</option>
-                <option value="Email">Email</option>
-                <option value="OTHER">Other</option>
-            </select>
-            
-            <input class="other-option" 
-                   type="text"
-                   maxlength="255"/>
-        </label>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label id="promo">
+                            <span class="fs-12">Promo Code</span>
+                            <input name="promo" type="text" class="form-control" maxlength="7" />
+                        </label>
+                    </div>
 
-        <label id="terms">
-            <span>Accept <a data-action="open" data-modal="terms-modal" href="#">Terms & Conditions</a></span>
-            <input aria-required="true" name="terms" type="checkbox"/>
-        </label>
+                    <div class="form-group col-sm-6">
+                        <label id="ref">
+                            <span class="fs-12">How did you hear</span>
+                            <span class="required">*</span>
+                            <select aria-required="true" class="form-control" name="ref">
+                                <option hidden selected></option>
+                                <option value="Social Media">Socital Media</option>
+                                <option value="From a friend">From a friend</option>
+                                <option value="Email">Email</option>
+                                <option value="OTHER">Other</option>
+                            </select>
 
-        <button type="submit">Submit!</button>
-    </form>
-    <div class="hide" id="success">
-        <h1>Done!</h1>
-    </div>
+                            <input class="other-option form-control mt-2" placeholder="How did you hear?" type="text"
+                                maxlength="255" />
+                        </label>
+                    </div>
+                </div>
 
-    <div id="terms-modal" class="hide">
-        <a href="#" data-modal="terms-modal" data-action="close">X</a>
-        <ul>
-            <li>All cancellation requests must be received by March 1, 2022</li>
-            <li>All cancellation requests are subject to a $100 cancellation fee.</li>
-            <li>No one under the age of 16 will be allowed on the show floor.</li>
-        </ul>
-    </div>
+                <div class="form-group text-center">
+                    <label id="terms">
+                        <input aria-required="true" name="terms" type="checkbox" />
+                        <span class="align-middle fs-12">
+                            Accept
+                            <a class="text-secondary" data-toggle="modal" data-target="#terms-modal" href="#">
+                                Terms & Conditions
+                            </a>
+                        </span>
+                        <span class="required">*</span>
+                    </label>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn-lg btn-success" type="submit">Submit!</button>
+                </div>
+            </form>
+            <div class="d-none" id="success">
+                <h1>Done!</h1>
+            </div>
+
+            <div class="modal fade" id="terms-modal" tabindex="-1" role="dialog" aria-labelledby="terms-modal-title"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="terms-modal-title">Terms & Conditions</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul>
+                                <li>All cancellation requests must be received by March 1, 2022</li>
+                                <li>All cancellation requests are subject to a $100 cancellation fee.</li>
+                                <li>No one under the age of 16 will be allowed on the show floor.</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted">
+                For assistance please call <a href="tel:555-555">555-5555</a> or email <a href="mailto:test@test.com">test@test.com</a>.
+            </span>
+        </div>
+    </footer>
+
+
     <script src="/form.bundle.js"></script>
 </body>
 

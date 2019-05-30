@@ -17,6 +17,22 @@ class CheckField extends Field {
     validate() {
         this.isValid = this.value === true;
     }
+
+    /**
+     * Highlight field.
+     */
+    highlight() {
+        this.labelEl.classList.add('border');
+        this.labelEl.classList.add('border-danger');
+    }
+
+    /**
+     * Clear highlight.
+     */
+    clearHighlight() {
+        this.labelEl.classList.remove('border');
+        this.labelEl.classList.remove('border-danger');
+    }
 }
 
 export default CheckField;

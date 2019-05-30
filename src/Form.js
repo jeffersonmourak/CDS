@@ -65,9 +65,9 @@ class Form {
     onOk(body) {
         if (body.ok) {
             const successText = document.querySelector('#success');
-            successText.classList.remove('hide');
+            successText.classList.remove('d-none');
 
-            this.formEl.classList.add('hide');
+            this.formEl.classList.add('d-none');
         }
     }
 
@@ -80,6 +80,8 @@ class Form {
         const errors = errorTextGen(body.error.map((error) => {
             const field = this.fields.find(fField => fField.id === error.field);
 
+            field.highlight();
+
             return { ...error, field };
         }));
 
@@ -91,6 +93,7 @@ class Form {
      */
     bodyBuilder() {
         return this.fields.reduce((body, field) => {
+            field.clearHighlight();
             body[field.id] = field.value;
             return body;
         }, {});

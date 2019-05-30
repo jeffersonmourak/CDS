@@ -13,8 +13,10 @@ class Field {
         this.id = id;
         this.validation = validation;
         this.fieldParent = document.querySelector(`#${this.id}`);
-        this.label = this.fieldParent.querySelector('span').innerText;
+        this.labelEl = this.fieldParent.querySelector('span');
+        this.label = this.labelEl.innerText;
         this.value = '';
+        this.isDirty = false;
         this.isEmpty = true;
         this.isValid = false;
 
@@ -39,12 +41,27 @@ class Field {
      */
     validate() {
         this.isValid = this.value.match(this.validation) !== null;
+        this.isDirty = true;
 
         if (this.isValid) {
-            this.fieldParent.classList.remove('invalid');
+            this.clearHighlight();
         } else {
-            this.fieldParent.classList.add('invalid');
+            this.highlight();
         }
+    }
+
+    /**
+     * Highlight field.
+     */
+    highlight() {
+        this.valueProvider.classList.add('border-danger');
+    }
+
+    /**
+     * Clear highlight.
+     */
+    clearHighlight() {
+        this.valueProvider.classList.remove('border-danger');
     }
 
     /**
@@ -63,7 +80,10 @@ class Field {
      */
     addListenDataChange() {
         this.valueProvider.addEventListener('input', this.commitDataChange);
-        this.commitDataChange();
+
+        if (this.isDirty) {
+            this.commitDataChange();
+        }
     }
 
     /**
