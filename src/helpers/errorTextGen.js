@@ -38,6 +38,6 @@ const errorText = (error) => {
  *
  * @param {Array} errors Array of backend errors.
  */
-const errorTextGen = errors => errors.reduce((acc, error) => [...acc, errorText(error)], []);
+const errorTextGen = errors => errors.reduce((acc, error) => [...acc, { text: errorText(error), type: 'danger' }], []);
 
 export default errorTextGen;

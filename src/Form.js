@@ -1,5 +1,5 @@
 import errorTextGen from './helpers/errorTextGen';
-import errorRenderer from './helpers/errorRenderer';
+import alertRenderer from './helpers/alertRenderer';
 
 /**
  * Form handler class.
@@ -64,10 +64,7 @@ class Form {
      */
     onOk(body) {
         if (body.ok) {
-            const successText = document.querySelector('#success');
-            successText.classList.remove('d-none');
-
-            this.formEl.classList.add('d-none');
+            alertRenderer([{ text: 'You have filled in all the fields correctly.', type: 'success' }], this.errorPanel);
         }
     }
 
@@ -85,7 +82,7 @@ class Form {
             return { ...error, field };
         }));
 
-        errorRenderer(errors, this.errorPanel);
+        alertRenderer(errors, this.errorPanel);
     }
 
     /**
